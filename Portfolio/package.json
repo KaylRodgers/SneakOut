@@ -1,16 +1,22 @@
 {
   "name": "portfolio",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "ejs": "~2.6.1",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaylRodgers/Repo.git"
+  },
+"dependencies": {
+  "express": "^8.19.3"        
+},
+  "author": "Kayleigh Rodgers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaylRodgers/Repo/issues"
+  },
+  "homepage": "https://github.com/KaylRodgers/Repo#readme"
 }
