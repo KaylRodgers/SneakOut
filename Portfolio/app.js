@@ -46,7 +46,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-
+app.use(express.static('images'));
 
 // Note for me-- this goes at bottom because it exports the 'app' object for external use
 module.exports = app;

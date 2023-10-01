@@ -22,7 +22,15 @@ router.get('/services', (req, res) => {
     res.render('services', { pageTitle: 'Services' });
 });
 
+// Handle the POST request from the contact form
+router.post('/contact', (req, res) => {
+    const { firstName, lastName, contactNumber, email, message } = req.body;
 
+    // Do something with the form data (e.g., send an email, store in a database)
+
+    // Redirect back to the home page
+    res.redirect('/');
+});
 // Define routes for other pages
 
 module.exports = router;
