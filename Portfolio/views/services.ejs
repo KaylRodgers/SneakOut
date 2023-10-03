@@ -6,19 +6,22 @@
     <title>Portfolio</title>
     <link rel='stylesheet' href='/css/style.css' />
 </head>
-<body>
-      <%- include('partials/header.ejs') %>
-    <div class="title">
-        <header>
+<body class="services-body">
+    <div class="services-container">
 
-        </header>
+        <div class="services-content">
+            <div class="image-container">
+                <img src="/images/logo1.jpg" alt="logo" class="logo">
+            </div>
+            <%- include('partials/header.ejs') %>
+            <header>
+                <h1>Kayleigh Rodgers</h1>
+                <p>This is the services page of my portfolio website.</p>
+            </header>
+        </div>
+
+        <%- include('partials/footer.ejs') %>
+
     </div>
-    <main>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Kayleigh Rodgers</p>
-    </footer>
 </body>
 </html>

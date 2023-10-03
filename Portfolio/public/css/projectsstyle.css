@@ -1,0 +1,31 @@
+/* CSS for the navigation bar */
+.nav {
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    padding: auto;
+  }
+  
+  .nav ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    height: 50px;
+    
+  }
+  
+  .nav ul li {
+    display: inline;
+    margin-right: 50px;
+    height: 100%;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .nav a:hover {
+    text-decoration: underline;
+  }

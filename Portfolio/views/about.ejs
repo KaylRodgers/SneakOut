@@ -6,19 +6,29 @@
     <title>Portfolio</title>
     <link rel='stylesheet' href='/css/style.css' />
 </head>
-<body>
-      <%- include('partials/header.ejs') %>
-    <div class="title">
-        <header>
+<body class="about-body">
+    <div class="about-container">
 
-        </header>
+        <div class="about-content">
+            <div class="image-container">
+                <img src="/images/logo1.jpg" alt="logo" class="logo">
+            </div>
+            <%- include('partials/header.ejs') %>
+            <main>
+                <section class="about">
+                    <h1>Kayleigh Rodgers</h1>
+        
+                    <img src="your-image.jpg" alt="Kayleigh">
+        
+                    <p>I am a passionate software engineering technology student here at centennial college. I work a part time job at a marina. In my spare time i love hiking, camping, cooking, working out, and playing video games.</p>
+        
+                    <img src="/images/resume.jpg" alt="resume">
+                </section>
+            </main>
+        </div>
+
+        <%- include('partials/footer.ejs') %>
+
     </div>
-    <main>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Kayleigh Rodgers</p>
-    </footer>
 </body>
 </html>

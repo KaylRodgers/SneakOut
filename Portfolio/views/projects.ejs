@@ -6,19 +6,45 @@
     <title>Portfolio</title>
     <link rel='stylesheet' href='/css/style.css' />
 </head>
-<body>
-      <%- include('partials/header.ejs') %>
-    <div class="title">
-        <header>
+<body class="projects-body">
+    <div class="projects-container">
 
-        </header>
+        <div class="projects-content">
+            <div class="image-container">
+                <img src="/images/logo1.jpg" alt="logo" class="logo">
+            </div>
+            <%- include('partials/header.ejs') %>
+
+            <div class="projects-header">
+                <h2>Previous Course Projects</h2>
+            </div>
+
+            <section class="projects">
+                <!-- Project 1 -->
+                <div class="project">
+                    <img src="/images/project-1.jpg" alt="Project 1">
+                    <h2>Project 1</h2>
+                    <p>The goal of this project was to show a slideshow of pictures</p>
+                </div>
+    
+                <!-- Project 2 -->
+                <div class="project">
+                    <img src="/images/project-2.jpg" alt="Project 2">
+                    <h2>Project 2</h2>
+                    <p>The goal of this project was to create an interactive bug smashing game</p>
+                </div>
+    
+                <!-- Project 3 -->
+                <div class="project">
+                    <img src="/images/project-3.jpg" alt="Project 3">
+                    <h2>Project 3</h2>
+                    <p>The goal of this project was to simulate a checkout process</p>
+                </div>
+            </section>
+        </div>
+
+        <%- include('partials/footer.ejs') %>
+
     </div>
-    <main>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Kayleigh Rodgers</p>
-    </footer>
 </body>
 </html>
