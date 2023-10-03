@@ -1,3 +1,5 @@
+/*Portfolio Kayleigh Rodgers, 301187753 Due Oct 2*/
+
 /*CSS for logo*/
 
 .image-container {
@@ -58,7 +60,7 @@
 /*CSS for home page*/
 
 .home-body {
-  background-image: url('background1.jpg');
+  background-image: url('/images/background1.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   backdrop-filter: blur(30px);
@@ -96,7 +98,7 @@
 
 /*CSS for about page*/
 .about-body {
-  background-image: url('background1.jpg');
+  background-image: url('/images/background1.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   backdrop-filter: blur(30px);
@@ -131,7 +133,7 @@
 }
 
 .projects-body {
-  background-image: url('background1.jpg');
+  background-image: url('/images/background1.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   backdrop-filter: blur(30px);
@@ -169,7 +171,7 @@
 
 /*CSS for Serives page*/
 .services-body {
-  background-image: url('background1.jpg');
+  background-image: url('/images/background1.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   backdrop-filter: blur(30px);
@@ -177,20 +179,37 @@
   margin: 0px;
 }
 
-.services-container {
-  position: relative;
-  min-height: 100vh;
-  text-align: center;
-  color: #fff;
-  font-size: 40px;
 
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 300px;
 }
 
-.services-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem; 
+
+.service {
+  flex-basis: calc(33.33% - 100px); 
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.service img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 40%; 
+}
+
+.service h2 {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.service p {
+  margin-top: 10px;
   color: #fff;
 }
 
@@ -198,7 +217,7 @@
 /*CSS for Contact page*/
 
 .contact-body {
-  background-image: url('background1.jpg');
+  background-image: url('/images/background1.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   backdrop-filter: blur(30px);
@@ -215,13 +234,6 @@
 
 }
 
-.contact-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem; 
-  color: #fff;
-}
 
 /* Basic styling for the form container */
 .form {
