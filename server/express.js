@@ -1,4 +1,4 @@
-//adding libraries used on the app
+//adding libraries used in this app
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')

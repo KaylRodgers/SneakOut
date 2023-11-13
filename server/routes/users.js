@@ -3,10 +3,10 @@ const userCtrl = require('../controllers/controller.js');
 
 const router = express.Router();
 
-//create CRUD api 
+//create CRUD operations 
 router.route("/users").get(userCtrl.list).post(userCtrl.create).delete(userCtrl.removeAll);
 
-//create CRUD api based on userID
+//create CRUD operations based on userID
 router
   .route("/users/:userId")
   .get(userCtrl.read)
