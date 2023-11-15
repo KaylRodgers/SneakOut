@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaylRodgers/Repo.git"
+  },
+"dependencies": {
+  "express": "^8.19.3"        
+},
+  "author": "Kayleigh Rodgers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaylRodgers/Repo/issues"
+  },
+  "homepage": "https://github.com/KaylRodgers/Repo#readme"
+}

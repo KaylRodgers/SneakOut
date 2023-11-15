@@ -1,0 +1,48 @@
+<!-- Portfolio Kayleigh Rodgers, 301187753 Due Oct 2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+<body class="services-body">
+    <div class="services-container">
+
+        <div class="services-content">
+            <div class="image-container">
+                <img src="/images/logo1.jpg" alt="logo" class="logo">
+            </div>
+            <%- include('partials/header.ejs') %>
+
+            <main>
+                <section class="services">
+                    <div class="service">
+                        <img src="/images/Programming_Languages.jpg" alt="Service 1">
+                        <h2>General Programming</h2>
+                        <p>I offer expertise in various programming languages and technologies to tackle diverse software development challenges.</p>
+                    </div>
+        
+                    <div class="service">
+                        <img src="/images/Webdev_code.png" alt="Service 2">
+                        <h2>Web Development</h2>
+                        <p>My web development services include building responsive and feature-rich websites tailored to your needs.</p>
+                    </div>
+        
+                    <div class="service">
+                        <img src="/images/appdev.png" alt="Service 3">
+                        <h2>Mobile App Development</h2>
+                        <p>I am able to create mobile applications for iOS and Android platforms, providing a seamless user experience.</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <%- include('partials/footer.ejs') %>
+
+    </div>
+</body>
+</html>

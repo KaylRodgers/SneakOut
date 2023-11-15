@@ -1,0 +1,57 @@
+<!-- Portfolio Kayleigh Rodgers, 301187753 Due Oct 2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+<body class="contact-body">
+    <div class="contact-container">
+
+        <div class="contact-content">
+            <div class="image-container">
+                <img src="/images/logo1.jpg" alt="logo" class="logo">
+            </div>
+            <%- include('partials/header.ejs') %>
+            <main>
+                <div class="contact-information">
+                    <h2>Contact Information</h2>
+                    <p>Get in touch! You can call me at 123-456-7890 or email me at randomemail@email.com</p>
+                </div>
+
+                <h3>Send me a Message</h3>
+                <div class="form">
+                    <form action="/contact" method="POST">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required><br>
+                
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required><br>
+                
+                        <label for="contactNumber">Contact Number:</label>
+                        <input type="tel" id="contactNumber" name="contactNumber" required><br>
+                
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required><br>
+                
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea><br>
+                
+                        <button type="submit" class="submit-button">Submit</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+
+        <%- include('partials/footer.ejs') %>
+
+    </div>
+</body>
+</html>
+
+
+
+

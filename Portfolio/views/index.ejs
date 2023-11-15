@@ -1,0 +1,36 @@
+<!-- Portfolio Kayleigh Rodgers, 301187753 Due Oct 2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+<body class="home-body">
+    <div class="home-container">
+
+        <div class="home-content">
+            <div class="image-container">
+                <img src="/images/logo1.jpg" alt="logo" class="logo">
+            </div>
+            
+            <%- include('partials/header.ejs') %>
+
+            <header class="home-header">
+                <h1>Kayleigh Rodgers</h1>
+            </header>
+
+            <p>"To excel in the field of Software Engineering Technology by acquiring and applying knowledge, skills, and innovative thinking. My mission is to contribute to the development of cutting-edge software solutions that address real-world problems and to continuously expand my expertise while adhering to the highest ethical and professional standards. I am committed to lifelong learning, collaboration, and using technology to make a positive impact on society."</p>
+            
+            <div class="linktoabout">
+               <a href="/about" class="linktoabout">Learn More About Me</a> 
+            </div>
+            
+        </div>
+        <%- include('partials/footer.ejs') %>
+
+    </div>
+</body>
+</html>
