@@ -30,7 +30,7 @@ const create = async (req, res) => {
     });
   } catch (err) {
     return res.status(400).json({
-      message: "user could not be created!"
+      message: "User could not be created!"
     });
   }
 };
@@ -51,6 +51,23 @@ const removeAll = async (req, res) => {
     });
   }
 };
+
+// JWT Token for user Authentication 
+
+const generateToken = (user) => {
+
+  const payload = {
+    _id: user._id,
+    name: user.name,
+    //whatever other data we decide to inclue :)
+  };
+
+  return jwt.sign(payload, config.jwtSecret, { expiresIn: '1h' });
+};
+
+module.exports = { create, userByID, read, list, remove, removeAll, update, generateToken };
+//
+
 
 //find user on database based on user's selection
 const userByID = async (req, res, next, id) => {
