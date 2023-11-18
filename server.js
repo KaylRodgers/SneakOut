@@ -127,7 +127,13 @@ app
                   const user = new User(req.body);
                 //   console.log(user);
                   await User.updateOne({username: req.body.username}, req.body);
-                  res.json(user);
+                  if (User.find(req.body))
+                  {
+                    res.json({"message": "Update successful!"});
+                  } else {
+                    throw err;
+                  }
+                  
                 } catch (err) {
                   return res.status(401).json({
                     message: "No user has been updated!"
@@ -144,10 +150,17 @@ app
               try {
                 let user = req.body.email;
                 let deletedUser = await User.deleteOne({email: user});
-                return res.status(200).json({
-                  deletedUser,
-                  message: "Successfully deleted!",
-                });
+                let isUserDeleted = await User.find({email: user});
+                if (isUserDeleted) {
+                  return res.status(200).json({
+                    message: "User is still active. Deletion unsuccessful.",
+                  });
+                } else {
+                  return res.status(200).json({
+                    deletedUser,
+                    message: "Successfully deleted!",
+                  });
+                }
               } catch (err) {
                 console.log(err)
                 return res.status(400).json({
