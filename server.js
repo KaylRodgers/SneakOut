@@ -5,8 +5,6 @@ import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { expressjwt } from "express-jwt";
 
-var tokenArray = new Array();
-
 const authSignIn = 
 async (req, res, next) => {
   try {

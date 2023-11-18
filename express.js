@@ -30,6 +30,7 @@ user.createCollection().then((collection) => {
     console.log("User collection is created.");
 });
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
