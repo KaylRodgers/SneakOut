@@ -3,6 +3,9 @@ import User from './models/users.js';
 import app from "./express.js";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
+import { expressjwt } from "express-jwt";
+
+var tokenArray = new Array();
 
 const authSignIn = 
 async (req, res, next) => {
@@ -25,6 +28,7 @@ async (req, res, next) => {
     }
     const token = jwt.sign({ _id: user._id }, config.jwtSecret);
     res.cookie('t', token, { expire: new Date() + 9999 });
+    config.userToken = token;
     return res.json({
       token,
       user: {
@@ -50,7 +54,8 @@ const authSignOut =
 const hasAuthorization =
   async (req, res, next) => {
     const authorized = 
-        req.body.token == req.cookies.t;
+        config.userToken == req.cookies.t
+        ;
     if (!(authorized)) {
       return res.status(401).json({
         error: "User is not authorized"
