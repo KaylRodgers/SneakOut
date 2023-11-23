@@ -4,7 +4,7 @@ const config = {
     jwtSecret: process.env.JWT_SECRET || "cOMp_229",
     mongoUri: process.env.MONGODB_URI || 
     "mongodb+srv://SneakOut_Admin:83fGvqfDZytC3Gb@cluster0.qvpmnce.mongodb.net/?retryWrites=true&w=majority",
-    userToken: process.env.USER_TOKEN || ""
+    userToken: process.env.USER_TOKEN || ["secretAdminCode_TkTWh"]
 };
 
-export default config;
+module.exports = config;
