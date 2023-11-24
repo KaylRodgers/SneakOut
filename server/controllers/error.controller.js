@@ -3,4 +3,4 @@ function getErrorMessage(err) {
     return err.message;
 }
 
-module.exports = { getErrorMessage };
+export default { getErrorMessage };

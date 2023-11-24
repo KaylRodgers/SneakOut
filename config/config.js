@@ -7,4 +7,4 @@ const config = {
     userToken: process.env.USER_TOKEN || ["secretAdminCode_TkTWh"]
 };
 
-module.exports = config;
+export default config;

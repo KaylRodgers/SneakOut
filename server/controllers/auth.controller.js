@@ -1,6 +1,6 @@
-const User = require('../models/user.model.js');
-const jwt = require('jsonwebtoken');
-const config = require('./../../config/config.js');
+import User from '../models/user.model.js';
+import jwt from 'jsonwebtoken';
+import config from './../../config/config.js';
 
 
 const signin = async (req, res) => {
@@ -56,4 +56,4 @@ const hasAuthorization =
 }
 ;
 
-module.exports = { signin, signout, hasAuthorization };
+export default { signin, signout, hasAuthorization };

@@ -1,9 +1,9 @@
-const config = require("./config/config.js");
-const app = require("./server/express.js");
-const crypto = require("crypto");
-const jwt = require("jsonwebtoken");
-const express = require("express");
-const path = require("path");
+import config from "./config/config.js"
+import app  from "./server/express.js"
+import crypto from "crypto"
+import jwt  from "jsonwebtoken"
+import express from "express"
+import path from "path"
 
 app.get('/', (req, res) => {
   res.json({message: "Welcome to User applicaiton!"});
@@ -23,6 +23,10 @@ app.get('/signinreact', (req, res) => {
   res.render(fileName);
 });
 */
+
+app.get("/api", (req, res) => {
+  res.json({ "users": ["userOne", "userTwo", "userThree"] } );
+});
 
 app.listen(config.port, (err) => {
   if (err) {

@@ -1,0 +1,22 @@
+html {
+    border-width: 15cm;
+    margin: 50px;
+    padding: 2rem;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.517);
+  }
+  
+  div {
+    padding: 15px;
+  }
+
+  form {
+    border-width: 5px;
+    border-color: blue;
+    border-radius: 15%;
+  }
+  
+  button {
+    background-color: black;
+    color: white;
+  }
