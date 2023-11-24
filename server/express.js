@@ -8,32 +8,12 @@ const template = require('../template.js');
 const userRoutes = require('./routes/user.routes.js');
 const authRoutes = require('./routes/auth.routes.js');
 const path = require('path');
-const config = require("../config/config.js");
-const mongoose = require("mongoose");
-const userSchema = require('./models/user.model.js');
-
-mongoose.Promise = global.Promise;
-mongoose.connect(config.mongoUri
-    , {}).then(() => {
-    console.log("Connected to the database!");
-});
-
-const database = mongoose.connection;
-
-database.on(
-    'error', () => {
-        throw new Error(`Unable to connect to database: ${config.mongoUri}`);
-    }
-);
-
-const user = userSchema;
-
-user.createCollection().then((collection) => {
-    console.log("User collection is created.");
-});
-
 
 const app = express();
+const CURRENT_WORKING_DIR = process.cwd();
+
+app.use(cors());
+app.options('http://localhost:5173', cors());
 
 app.get('/', (req, res) => {
     res.status(200).send(template());
@@ -52,9 +32,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
-app.use(cors());
 app.use('/', userRoutes);
 app.use('/', authRoutes);
+
 app.use(
     (err, req, res, next) => {
         if (err.name === 'UnauthorizedError') {

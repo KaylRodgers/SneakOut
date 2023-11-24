@@ -1,5 +1,6 @@
 const User = require('../models/user.model.js');
 const jwt = require('jsonwebtoken');
+const {expressjwt} = require('express-jwt');
 const config = require('./../../config/config.js');
 
 
@@ -38,6 +39,11 @@ const signout = (req, res) => {
         message: "signed out"
     })
 };
+const requireSignin = expressjwt({ 
+    secret: config.jwtSecret, 
+    algorithms: ["HS256"],
+userProperty: 'auth'
+})
 
 const hasAuthorization = 
     (req, res, next) => {
@@ -56,4 +62,4 @@ const hasAuthorization =
 }
 ;
 
-module.exports = { signin, signout, hasAuthorization };
+module.exports = { signin, signout, requireSignin, hasAuthorization };
