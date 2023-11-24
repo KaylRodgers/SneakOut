@@ -24,9 +24,9 @@ export default function Home() {
   const classes = useStyles();
   return (
     <>
-      <Link to="/">Home</Link> | <Link to="/users">Users</Link> |{" "}
+      {/* <Link to="/">Home</Link> | <Link to="/users">Users</Link> |{" "}
       <Link to="/signup">Sign Up</Link> | <Link to="/signin">Sign In</Link> |
-      <Link to="/">Sign Out</Link>
+      <Link to="/">Sign Out</Link> */}
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="body2" component="p">

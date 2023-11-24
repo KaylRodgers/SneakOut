@@ -5,7 +5,7 @@ const authCtrl = require("../controllers/auth.controller.js");
 const router = express.Router();
 
 router
-  .route("/api/users")
+  .route('/api/users')
   .post(userCtrl.create)
   //Complete
   .get(authCtrl.hasAuthorization, userCtrl.list)
@@ -14,7 +14,7 @@ router
   .delete(authCtrl.hasAuthorization, userCtrl.remove);
 
 router
-  .route("/api/users/:userId")
+  .route('/api/users/:userId')
   .get(authCtrl.requireSignin, userCtrl.read)
   .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update)
   .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove);

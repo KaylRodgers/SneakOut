@@ -1,5 +1,4 @@
-import { useState } from "react";
-import AuthManager from "./auth-helper.js";
+import React, { useState } from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
@@ -7,15 +6,12 @@ import {
   Typography,
   TextField,
   CardActions,
+  Icon,
   Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
 } from "@material-ui/core";
-import { Link, useNavigate } from "react-router-dom";
+import auth from './../auth/auth-helper';
 import { signin } from "./api-auth.js";
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -30,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   error: {
-    color: "red",
+    verticalAlign: 'middle'
   },
   submit: {
     margin: "0 auto",
@@ -41,107 +37,64 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signin() {
-  const classes = useStyles();
-
-  const [open, setOpen] = useState(false);
+export default function Signin(props) {
+  const classes = useStyles()
   const [values, setValues] = useState({
-    email: "",
-    password: "",
-    error: "",
-  });
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleChange = (name) => (event) => {
-    setValues({ ...values, [name]: event.target.value });
-  };
+    email: '',
+    password: '',
+    error: '',
+    redirectToReferrer: false
+  })
 
   const clickSubmit = () => {
     const user = {
       email: values.email || undefined,
-      password: values.password || undefined,
-    };
+      password: values.password || undefined
+    }
 
-    // Replace with your authentication function (e.g., signin)
     signin(user).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({ ...values, error: data.error })
       } else {
-        let auth = new AuthManager();
-        auth.authenticate(data.token, () => {
-          setValues({ ...values, error: "" });
-          setOpen(true);// Redirect to the home page after successful login
-        });
-
+        auth.authenticate(data, () => {
+          setValues({ ...values, error: '', redirectToReferrer: true })
+        })
       }
-    });
-  };
+    })
+  }
+
+  const handleChange = username => event => {
+    setValues({ ...values, [username]: event.target.value })
+  }
+
+  const { from } = props.location.state || {
+    from: {
+      pathname: '/'
+    }
+  }
+  const { redirectToReferrer } = values
+  if (redirectToReferrer) {
+    return (<Redirect to={from} />)
+  }
 
   return (
-    <>
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography variant="h6" className={classes.title}>
-            Sign In
-          </Typography>
-          <TextField
-            label="Email"
-            className={classes.textField}
-            type="email"
-            onChange={handleChange("email")}
-            value={values.email}
-          />
-          <TextField
-            label="Password"
-            className={classes.textField}
-            type="password"
-            onChange={handleChange("password")}
-            value={values.password}
-          />
-        </CardContent>
-        {values.error && (
-          <Typography variant="body2" className={classes.error}>
+  <Card className={classes.card}>
+      <CardContent>
+        <Typography variant="h5" className={classes.title}>
+          Sign In
+        </Typography>
+        <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal" /><br />
+        <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal" />
+        <br /> {
+          values.error && (<Typography component="p" color="error">
+            <Icon color="error" className={classes.error}>error</Icon>
             {values.error}
-          </Typography>
-        )}
-        <CardActions>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={clickSubmit}
-          >
-            Sign In
-          </Button>
-        </CardActions>
-      </Card>
-
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>New Account</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Successfully Signed in.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Link to="/">
-            <Button
-              color="primary"
-              autoFocus
-              variant="contained"
-              onClick={handleClose}
-            >
-              Exit
-            </Button>
-          </Link>
-        </DialogActions>
-      </Dialog>
-    </>
-
-
-
-  );
+          </Typography>)
+        }
+      </CardContent>
+      <CardActions>
+        <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Sign In</Button>
+      </CardActions>
+    </Card>
+  )
 }
