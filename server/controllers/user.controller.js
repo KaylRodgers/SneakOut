@@ -1,6 +1,6 @@
-const User = require('../models/user.model.js');
-const extend = require('lodash/extend.js');
-const errorHandler = require('./error.controller.js');
+import User from '../models/user.model.js';
+import extend  from 'lodash/extend.js';
+import errorHandler from './error.controller.js';
 
 
 //A user can list all user profiles.
@@ -92,4 +92,4 @@ const remove =
     }
 ;
 
-module.exports = { create, list, remove, update };
+export default { create, list, remove, update };

@@ -1,15 +1,14 @@
-const config = require("./config/config.js");
-const app = require("./server/express.js");
-const crypto = require("crypto");
-const jwt = require("jsonwebtoken");
-const express = require("express");
-const path = require("path");
+import config from "./config/config.js"
+import app  from "./server/express.js"
+import crypto from "crypto"
+import jwt  from "jsonwebtoken"
+import express from "express"
+import path from "path"
 
 app.get('/', (req, res) => {
   res.json({message: "Welcome to User applicaiton!"});
 })
 
-<<<<<<< Updated upstream
 /*
 // app.engine('html', require('js').renderFile);
 app.set('view engine', 'js');
@@ -25,12 +24,10 @@ app.get('/signinreact', (req, res) => {
 });
 */
 
-=======
 app.get("/api", (req, res) => {
   res.json({ "users": ["userOne", "userTwo", "userThree"] } );
 });
 
->>>>>>> Stashed changes
 app.listen(config.port, (err) => {
   if (err) {
       console.log(err);

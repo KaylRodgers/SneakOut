@@ -1,6 +1,6 @@
-const express = require('express');
-const userCtrl = require('../controllers/user.controller.js');
-const authCtrl = require('../controllers/auth.controller.js');
+import express from 'express';
+import userCtrl from '../controllers/user.controller.js';
+import authCtrl from '../controllers/auth.controller.js';
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router
         .put(authCtrl.hasAuthorization, userCtrl.update)
         .delete(authCtrl.hasAuthorization, userCtrl.remove);
 
-module.exports = router;
+export default router;
