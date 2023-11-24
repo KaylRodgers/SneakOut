@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
   res.json({message: "Welcome to User applicaiton!"});
 })
 
+<<<<<<< Updated upstream
 /*
 // app.engine('html', require('js').renderFile);
 app.set('view engine', 'js');
@@ -24,6 +25,12 @@ app.get('/signinreact', (req, res) => {
 });
 */
 
+=======
+app.get("/api", (req, res) => {
+  res.json({ "users": ["userOne", "userTwo", "userThree"] } );
+});
+
+>>>>>>> Stashed changes
 app.listen(config.port, (err) => {
   if (err) {
       console.log(err);
