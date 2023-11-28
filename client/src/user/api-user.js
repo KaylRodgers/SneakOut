@@ -36,6 +36,8 @@ const create =  async (user) => {
                 'Content-Type': 'application/json'
             }
         })
+
+        return await response.json();
     } catch (err) {
         console.log(err.message);
     }
@@ -48,7 +50,7 @@ const update = async (user) => {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + credentials.t
+                'Authorization': 'Bearer '
             },
             body: JSON.stringify(user)
         });
@@ -63,7 +65,7 @@ const remove = async (user) => {
         let response = await fetch('/api/users', {
             'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
+          'Authorization': 'Bearer '
         });
       return await response.json();
     } catch (err) {
@@ -71,4 +73,4 @@ const remove = async (user) => {
     }
 };
 
-export default { listProducts, listUsers, create, update, remove};
+export default { listProducts, listUsers, create, update, remove };

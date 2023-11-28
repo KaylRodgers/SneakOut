@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import authHelper from './../auth/auth-helper'
+import authHelper from '../auth/auth-helper.js'
 import userRouter from './api-user.js'
 import {Redirect, Link} from 'react-router-dom'
 

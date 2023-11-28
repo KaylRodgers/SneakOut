@@ -1,7 +1,8 @@
-import Home from './core/Home.js';
-import Users from './user/Users.js';
-import Signup from './user/Signup.js';
-import Signin from './auth/Signin.js';
+import Home from './core/Home.jsx';
+import Users from './user/Users.jsx';
+import  Signup  from './user/Signup.jsx';
+import Signin from './auth/Signin.jsx';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 export default () => {

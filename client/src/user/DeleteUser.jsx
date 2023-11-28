@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import authHelper from './../auth/auth-helper';
+import authHelper from '../auth/auth-helper.js';
 import auth from '../auth/api-auth.js';
 import userApi from './api-user.js';
 
