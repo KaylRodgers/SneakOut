@@ -73,4 +73,8 @@ const remove = async (user) => {
     }
 };
 
-export default { listProducts, listUsers, create, update, remove };
+const findOneUser = async(user) => {
+    console.log("complete this");
+};
+
+export default { listProducts, listUsers, create, update, remove, findOneUser };

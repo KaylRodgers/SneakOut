@@ -49,8 +49,7 @@ export default function Signin(props) {
             email: "",
             username: "",
             password: "",
-            error: '',
-            redirectToReffer: false
+            error: ''
         }
     );
     
@@ -67,7 +66,7 @@ export default function Signin(props) {
                 } else {
                     authHelper.authenticate(
                         data, () => {
-                            setValues({...values, error: '', redirectToReffer: true})
+                            setValues({...values, error: ''})
                         }
                     )
                 }
