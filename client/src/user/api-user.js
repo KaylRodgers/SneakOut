@@ -1,19 +1,19 @@
-// const listProducts = async (signal) => {
-//     try {
-//         let response = await fetch('/products', {
-//             method: 'GET',
-//             signal: signal,
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//             }
-//         });
+const listProducts = async (signal) => {
+    try {
+        let response = await fetch('/products', {
+            method: 'GET',
+            signal: signal,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
 
-//         return await response.json();
-//     } catch (err) {
-//         console.log(err.message);
-//     }
-// };
+        return await response.json();
+    } catch (err) {
+        console.log(err.message);
+    }
+};
 
 const listUsers = async (signal) => {
     try {
@@ -70,3 +70,5 @@ const remove = async (user) => {
         console.log(err.message);
     }
 };
+
+export default { listProducts, listUsers, create, update, remove};
