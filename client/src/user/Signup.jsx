@@ -64,8 +64,8 @@ export default function Signup() {
         }
 
         userRouter.create(user).then((data) => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
+            if (data.err) {
+                setValues({ ...values, error: data.err });
             } else {
                 setValues({ ...values, error: '', open: true });
             }
@@ -79,8 +79,13 @@ export default function Signup() {
                     <Typography variant="h6" className={classes.title}>
                         Sign Up
                     </Typography>
-                    <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={change('name')} margin="normal" /><br />
+                    
+                    <TextField id="username" label="Username" className={classes.textField}
+                    // value={values.username}
+                    onChange={change('username')} margin="normal" /><br />
+                    
                     <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={change('email')} margin="normal" /><br />
+                    
                     <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={change('password')} margin="normal" />
                     <br /> {
                         values.error && (<Typography component="p" color="error">
@@ -92,7 +97,7 @@ export default function Signup() {
                     <Button color="primary" variant="contained" onClick={submit} className={classes.submit}>Submit</Button>
                 </CardActions>
             </Card>
-            <Dialog open={values.open} disableBackdropClick={true}>
+            <Dialog open={values.open}>
                 <DialogTitle>New Account</DialogTitle>
                 <DialogContent>
                     <DialogContentText>

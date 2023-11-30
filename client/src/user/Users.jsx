@@ -1,8 +1,5 @@
 import React from 'react';
-import useState from 'react';
-import useStyles from 'react';
-import useEffect from 'react';
-import list from 'react';
+import { useState, useStyles, useEffect, list } from 'react';
 import userRouter from './api-user';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -18,15 +15,14 @@ import Avatar from '@material-ui/core/Avatar';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-// import ArrowForward from '@material-ui/core/ArrowForward';
+
+
 
 export default function Users() {
-    const classes = useStyles();
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
+    const [users, setUsers] = useState();
         const abortController = new AbortController();
         const signal = abortController.signal;
+        
         userRouter.listUsers(signal).then((data) => {
             if (data && data.error) {
                 console.log(data.error);
@@ -34,14 +30,14 @@ export default function Users() {
                 setUsers(data);
             }
             });
-            return function abort() {
-                abortController.abort();
-            }
-        }, []);
+            // return function abort() {
+            //     abortController.abort();
+            // }
+        
 
     return (
-        <Paper className={classes.root} elevation={4}>
-            <Typography variant="h6" className={classes.title}>
+        <Paper elevation={4}>
+            <Typography variant="h6">
                 All Users
             </Typography>
             <List dense>

@@ -1,16 +1,16 @@
-import Home from './core/Home.js';
-import Users from './user/Users.js';
-import Signup from './user/Signup.js';
-import Signin from './auth/Signin.js';
+import Home from './core/Home.jsx';
+import Users from './user/Users.jsx';
+import Signup from './user/Signup.jsx';
+import Signin from './auth/Signin.jsx';
 import { Route, Routes, Outlet } from 'react-router-dom';
 
 export default () => {
     return (
         <Routes>
-            <Route path="/" element={Home()} />
-            <Route path="/users" element={Users()} />
-            <Route path="/signup" element={Signup()} />
-            <Route path="/signin" element={Signin()} />
+            <Route path="/" Component={Home} />
+            <Route path="/users" Component={Users} />
+            <Route path="/signup" Component={Signup} />
+            <Route path="/signin" Component={Signin} />
         </Routes>
     )
 };

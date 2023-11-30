@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-import './Signin.css';
 import auth from './api-auth.js';
 import authHelper from './auth-helper.js';
 import Card from '@material-ui/core/Card';
@@ -81,26 +80,31 @@ export default function Signin(props) {
     
 
     return (
-        <html>
-            <h1>Hello</h1>
-        </html>
-        // <Card className={classes.card}>
-        //     <CardContent>
-        //         <Typography variant="h5" className={classes.title}>
-        //             Sign In
-        //         </Typography>
-        //         <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal" /><br />
-        //         <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal" />
-        //         <br /> {
-        //             values.error && (<Typography component="p" color="error">
-        //                 <Icon color="error" className={classes.error}>error</Icon>
-        //                 {values.error}
-        //             </Typography>)
-        //         }
-        //     </CardContent>
-        //     <CardActions>
-        //         <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
-        //     </CardActions>
-        // </Card>
+        <Card className={classes.card}>
+            <CardContent>
+                <Typography variant="h5" className={classes.title}>
+                    Sign In
+                </Typography>
+                <TextField id="username" label="Username" className={classes.textField} value={values.username} onChange={handleChange('username')} margin="normal" /><br />
+                
+                <TextField id="email" type="email" label="Email" className={classes.textField} 
+                // value={values.email}
+                onChange={handleChange('email')} margin="normal" /><br />
+
+                <TextField id="password" type="password" label="Password" className={classes.textField}
+                // value={values.password}
+                onChange={handleChange('password')} margin="normal" />
+                
+                <br /> {
+                    values.error && (<Typography component="p" color="error">
+                        <Icon color="error" className={classes.error}>error</Icon>
+                        {values.error}
+                    </Typography>)
+                }
+            </CardContent>
+            <CardActions>
+                <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
+            </CardActions>
+        </Card>
     );
 }

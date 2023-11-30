@@ -1,6 +1,6 @@
 const listProducts = async (signal) => {
     try {
-        let response = await fetch('/products', {
+        let response = await fetch('http://localhost:5173/products', {
             method: 'GET',
             signal: signal,
             headers: {
@@ -17,9 +17,9 @@ const listProducts = async (signal) => {
 
 const listUsers = async (signal) => {
     try {
-        let response = await fetch('/api/users', {
+        let response = await fetch('http://localhost:5173/api/users', {
             method: 'GET',
-            signal: signal,
+            signal: signal
         })
         return await response.json();
     } catch (err) {
@@ -27,16 +27,17 @@ const listUsers = async (signal) => {
     }
 };
 
-const create =  async (user) => {
+const create = async (user) => {
     try {
-        let response = await fetch('/api/users', {
+        let response = await fetch('http://localhost:5173/api/users', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : null
+            },
+            body: JSON.stringify(user)
         })
-
         return await response.json();
     } catch (err) {
         console.log(err.message);
@@ -45,7 +46,7 @@ const create =  async (user) => {
 
 const update = async (user) => {
     try {
-        let response = await fetch('/api/users', {
+        let response = await fetch('http://localhost:5173/api/users', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -62,18 +63,22 @@ const update = async (user) => {
 
 const remove = async (user) => {
     try {
-        let response = await fetch('/api/users', {
-            'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer '
+        let response = await fetch('http://localhost:5173/api/users', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '
+            }
+            ,
+            body: JSON.stringify(user)
         });
-      return await response.json();
+        return await response.json();
     } catch (err) {
         console.log(err.message);
     }
 };
 
-const findOneUser = async(user) => {
+const findOneUser = async (user) => {
     console.log("complete this");
 };
 
