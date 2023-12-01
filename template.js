@@ -1,8 +1,8 @@
-export default () => {
+module.exports = () => {
     return `
     <html>
         <head>
-            <title>SneakOut!</title>
+            <title>SneakOut!!</title>
         </head>
         
         <body>

@@ -1,6 +1,7 @@
-import User from '../models/user.model.js';
-import jwt from 'jsonwebtoken';
-import config from './../../config/config.js';
+const User = require('../models/user.model.js');
+const jwt = require('jsonwebtoken');
+const {expressjwt} = require('express-jwt');
+const config = require('./../../config/config.js');
 
 
 const signin = async (req, res) => {
@@ -18,7 +19,7 @@ const signin = async (req, res) => {
             token,
             user: {
                 _id: user._id,
-                name: user.name,
+                username: user.username,
                 email: user.email
             }
         });
@@ -38,6 +39,11 @@ const signout = (req, res) => {
         message: "signed out"
     })
 };
+const requireSignin = expressjwt({ 
+    secret: config.jwtSecret, 
+    algorithms: ["HS256"],
+userProperty: 'auth'
+})
 
 const hasAuthorization = 
     (req, res, next) => {
@@ -56,4 +62,4 @@ const hasAuthorization =
 }
 ;
 
-export default { signin, signout, hasAuthorization };
+module.exports = { signin, signout, requireSignin, hasAuthorization };

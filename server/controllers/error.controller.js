@@ -1,6 +1,9 @@
-//Error handling functionality will be handled later.
-function getErrorMessage(err) {
-    return err.message;
+function handleError(req, res) {
+  //Error handling functionality will be handled later.
 }
 
-export default { getErrorMessage };
+function getErrorMessage(err) {
+  return err.message;
+}
+
+module.exports = { getErrorMessage };

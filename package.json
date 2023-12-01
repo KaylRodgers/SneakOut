@@ -2,15 +2,20 @@
   "name": "sneakout",
   "version": "1.0.0",
   "description": "This is part b of group 1's group project in COMP229(Web Application Development).",
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "concurrently": "^8.2.0",
+    "nodemon": "^2.0.22"
+  },
   "dependencies": {
-    "@material-ui/core": "^4.12.4",
     "accepts": "^1.3.8",
     "ansi-regex": "^5.0.1",
     "ansi-styles": "^4.3.0",
     "array-flatten": "^1.1.1",
     "async": "^3.2.5",
     "babel": "^6.23.0",
-    "babel-node": "^0.0.1-security",
     "balanced-match": "^1.0.2",
     "body-parser": "^1.20.2",
     "brace-expansion": "^1.1.11",
@@ -108,7 +113,6 @@
     "raw-body": "^2.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
     "regenerator-runtime": "^0.14.0",
     "require-directory": "^2.1.1",
     "rxjs": "^7.8.1",
@@ -153,6 +157,5 @@
     "B"
   ],
   "author": "Group 1",
-  "license": "MIT",
-  "type": "module"
+  "license": "MIT"
 }
