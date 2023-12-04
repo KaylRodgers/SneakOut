@@ -7,7 +7,6 @@ const signin = async (user) => {
                 "Content-Type": "application/json",
             }
             ,mode: 'cors'
-            // ,credentials: "include"
             ,body: JSON.stringify(user)
             ,credentials: "same-origin"
         })
