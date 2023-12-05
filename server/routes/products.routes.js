@@ -6,16 +6,16 @@ const router = express.Router();
 router
     .route('/api/products')
     .post(
-        authCtrl.hasAuthorization,
+        // authCtrl.hasAuthorization,
         prodCtrl.create)
     .get(
-        authCtrl.hasAuthorization,
+        // authCtrl.hasAuthorization,
         prodCtrl.list)
     .put(
-        authCtrl.hasAuthorization,
+        // authCtrl.hasAuthorization,
         prodCtrl.updatePrice)
     .delete(
-        authCtrl.hasAuthorization,
+        // authCtrl.hasAuthorization,
         prodCtrl.remove);
 
 

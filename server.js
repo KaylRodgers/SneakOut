@@ -20,11 +20,11 @@ database.on(
 
 
 User.createCollection().then((collection) => {
-    console.log("User collection is created.");
+    console.log("User collection is connected.");
 });
 
 Sneaker.createCollection().then((collection) => {
-  console.log("Sneaker collection is created.");
+  console.log("Sneaker collection is connected.");
 });
 
 app.get('/', (req, res) => {

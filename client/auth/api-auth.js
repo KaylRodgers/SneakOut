@@ -7,7 +7,6 @@ const signin = async (user) => {
                 "Content-Type": "application/json",
             }
             ,mode: 'cors'
-            // ,credentials: "include"
             ,body: JSON.stringify(user)
             ,credentials: "same-origin"
         })
@@ -20,8 +19,10 @@ const signin = async (user) => {
 const signout = async () => {
     try {
         let response = await fetch('http://localhost:3001/api/auth/signout/', {
-            method: 'GET'
+            method: 'GET',
+            mode: 'cors'
         })
+        
         return await response.json()
     } catch (err) {
         console.log(err)
