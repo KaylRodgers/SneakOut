@@ -27,6 +27,8 @@ const listUsers = async (signal) => {
     }
 };
 
+
+//Create user
 const create = async (user) => {
     try {
         let response = await fetch('http://localhost:5173/api/users', {
@@ -78,8 +80,21 @@ const remove = async (user) => {
     }
 };
 
-const findOneUser = async (user) => {
-    console.log("complete this");
+//findOneUser
+const findOneUser = async (userId) => {
+    try {
+        let response = await fetch(`http://localhost:5173/api/users/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        });
+
+        return await response.json();
+    } catch (err) {
+        console.log(err.message);
+    }
 };
 
 export default { listProducts, listUsers, create, update, remove, findOneUser };

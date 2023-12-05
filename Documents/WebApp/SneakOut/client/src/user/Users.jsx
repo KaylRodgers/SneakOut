@@ -15,49 +15,31 @@ import Avatar from '@material-ui/core/Avatar';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import React, { useEffect, useState } from 'react';
+import userRouter from './user/api-user';
 
+const Users = () => {
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    const abortController = new AbortController();
+    userRouter.listUsers(abortController.signal).then((data) => {
+      setUsers(data);
+    });
 
-export default function Users() {
-    const [users, setUsers] = useState();
-        const abortController = new AbortController();
-        const signal = abortController.signal;
-        
-        userRouter.listUsers(signal).then((data) => {
-            if (data && data.error) {
-                console.log(data.error);
-            } else {
-                setUsers(data);
-            }
-            });
-            // return function abort() {
-            //     abortController.abort();
-            // }
-        
+    return () => abortController.abort();
+  }, []);
 
-    return (
-        <Paper elevation={4}>
-            <Typography variant="h6">
-                All Users
-            </Typography>
-            <List dense>
-                {users.map((item, i) => {
-                    return /**<Link to={"/user/"} key={i}>*/ <ListItem button>
-                            <ListItemAvatar>
-                                <Avatar>
+  return (
+    <div>
+      <h2>User List</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user._id}>{user.username}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary={item.name} />
-                            {/* <ListItemSecondaryAction>
-                                <IconButton>
-                                    <ArrowForward />
-                                </IconButton>
-                            </ListItemSecondaryAction> */}
-                        </ListItem>
-                    // </Link>
-                })}
-            </List>
-        </Paper>
-    )
-}
+export default Users;

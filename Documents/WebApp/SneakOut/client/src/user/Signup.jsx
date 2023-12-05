@@ -15,6 +15,42 @@ import { Link } from 'react-router-dom';
 import userRouter from './api-user.js';
 import React, { useState } from 'react';
 
+import * as userRouter from './api-user.js';
+import React, { useState } from 'react';
+import userRouter from './user/api-user'; // Adjust the path based on your actual structure
+
+const Signup = () => {
+  const [values, setValues] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+
+  const handleSubmit = () => {
+    const user = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+    };
+
+    userRouter.create(user).then((data) => {
+      console.log(data);
+    });
+  };
+
+  return (
+    <div>
+      {/* ... (Form components and layout) ... */}
+      <button onClick={handleSubmit}>Create User</button>
+    </div>
+  );
+};
+
+export default Signup;
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -41,37 +77,6 @@ const useStyles = makeStyles(theme => ({
         marginBottom: theme.spacing(2)
     }
 }))
-
-export default function Signup() {
-    const classes = useStyles();
-    const [values, setValues] = useState({
-        username: '',
-        email: '',
-        password: '',
-        open: false,
-        error: ''
-    });
-
-    const change = name => event => {
-        setValues({ ...values, [name]: event.target.value });
-    };
-
-    const submit = () => {
-        const user = {
-            username: values.username || undefined,
-            enail: values.email || undefined,
-            password: values.password || undefined,
-        }
-
-        userRouter.create(user).then((data) => {
-            if (data.err) {
-                setValues({ ...values, error: data.err });
-            } else {
-                setValues({ ...values, error: '', open: true });
-            }
-        })
-    }
-
     return (
         <div>
             <Card className={classes.card}>
@@ -115,4 +120,3 @@ export default function Signup() {
         </div>
     )
         ;
-}
