@@ -7,6 +7,10 @@ const signin = async (user) => {
                 "Content-Type": "application/json",
             }
             ,mode: 'cors'
+<<<<<<< Updated upstream
+=======
+            // ,credentials: "include"
+>>>>>>> Stashed changes
             ,body: JSON.stringify(user)
             ,credentials: "same-origin"
         })
