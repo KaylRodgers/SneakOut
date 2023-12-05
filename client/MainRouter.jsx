@@ -7,7 +7,9 @@ import Signin from './auth/Signin';
 import Menu from './core/Menu';
 import Products from './products/Products'
 import FeaturedItems from "./products/FeaturedItems";
-
+import EditItems from "./products/EditItems";
+import CreateItems from "./products/CreateItems";
+import RemoveItems from "./products/RemoveItem";
 
 const MainRouter = () => {
   return (
@@ -20,6 +22,9 @@ const MainRouter = () => {
         <Route path="/signin" component={Signin}/>
         <Route path="/products" component={Products}/>
         <Route path="/featureditems" component={FeaturedItems}/>
+        <Route path="/edititems" component={EditItems}/>
+        <Route path="/createitems" component={CreateItems}/>
+        <Route path="/removeitems" component={RemoveItems}/>
       </Switch>
     </div>
   );

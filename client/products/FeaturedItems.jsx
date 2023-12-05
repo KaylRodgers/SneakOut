@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import products from './api-products.js'
-
+import './FeaturedItems.css'
 
 const FeaturedItems = () => {
     const [sneakers, setSneakers] = useState([])
@@ -13,16 +13,18 @@ const FeaturedItems = () => {
     })
 
 
+
     return (
-        // <div id="featured-items" className="shoes">
-        <div>
+        <div id="featured-items">
             {sneakers.map((item, index) => (
-                <div key={index}>
-                    <img src={item.link}/>
-                    <p>Brand: {item.model}</p>
-                    <p>Colourway: {item.colourway}</p>
-                    <p>Price: ${item.price.toFixed(2)}</p>
-                    {/* <p>{item._id}</p> */}
+                <div key={index} id="item">
+                    <img src={item.link} />
+                    <div id="details">
+                        <p>Brand: {item.model}</p>
+                        <p>Colourway: {item.colourway}</p>
+                        <p>Price: ${item.price.toFixed(2)}</p>
+                        {/* <p>{item._id}</p> */}
+                    </div>
                 </div>
             ))}
         </div>
