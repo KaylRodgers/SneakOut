@@ -28,7 +28,7 @@ Sneaker.createCollection().then((collection) => {
 });
 
 app.get('/', (req, res) => {
-  res.json({message: "Welcome to User application!"});
+  res.json({message: "Welcome to SneakOut!"});
 });
 
 app.listen(config.port, (err) => {

@@ -44,6 +44,7 @@ const list = async (req, res) => {
           });
         }
     } catch (err) {
+        console.log(err.message)
       return res.status(400).json({
         message: "The sneaker cannot be created!",
       });
@@ -53,7 +54,7 @@ const list = async (req, res) => {
   const remove = async (req, res) => {
     try {
       let deletedSneaker =
-        await User.deleteOne({ model: req.body.model, colourway: req.body.colourway });
+        await Sneaker.deleteOne({ model: req.body.model, colourway: req.body.colourway });
       
         if (deletedSneaker.deletedCount == 0) {
         return res.status(200).json({

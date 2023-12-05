@@ -29,6 +29,7 @@ const SneakerSchema = new mongoose.Schema(
         release: {
             type: Date,
             trim: true,
+            default: Date.now,
             required: "A release date is required."
         }
     }
