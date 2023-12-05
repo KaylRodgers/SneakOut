@@ -7,11 +7,14 @@ const create = async (user) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          mode: "no-cors",
+          mode: "cors",
           // credentials: "same-origin",
           body: JSON.stringify(user)
         });
-        return await response.json();
+        if (response) {
+          return await response.json();
+        }
+        return "Error: No response"
     } catch(err) {
       console.log(err)
     }
