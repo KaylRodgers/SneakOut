@@ -46,8 +46,6 @@ const CreateItems = (props) => {
         model: "",
         price: 0,
     });
-    const [open, setOpen] = useState(false);
-    const [error, setError] = useState(false);
 
     const handleChange = username => event => {
         setValues({ ...values, [username]: event.target.value })
@@ -64,17 +62,25 @@ const CreateItems = (props) => {
 
         products.create(sneaker).then((data) => {
             if (data.message == "The sneaker cannot be created!") {
+                setError(true);
+                setErrorMessage(data.message);
+            } else {
                 setValues({ ...values, error: '', redirectToReferrer: true });
                 setOpen(true);
-            } else {
-                // useEffect (() => { setError(true) }, []);
-                console.log(error);
+                console.log("Sneaker created.");
             }
         })
     }
 
-    function handleClose() {
-        return <Redirect to="/" />;
+    const [open, setOpen] = useState(false);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    function handleSuccessClose() {
+        setOpen(false);
+    }
+    function handleErrorClose() {
+        setError(false);
     }
 
     return (
@@ -103,8 +109,26 @@ const CreateItems = (props) => {
                 <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit} >Create Sneaker</Button>
             </CardActions>
 
+            <Dialog open={error}>
+                <DialogTitle>Error!</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        There has been an error: {errorMessage}.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                        <Button
+                            color="primary"
+                            autoFocus
+                            variant="contained"
+                            onClick={handleErrorClose}
+                            >
+                            Exit
+                        </Button>
+                </DialogActions>
+            </Dialog>
 
-            {/* <Dialog open={open} onClose={handleClose} disableEscapeKeyDown>
+            <Dialog open={open}>
                 <DialogTitle>New Sneaker</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -112,18 +136,16 @@ const CreateItems = (props) => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Link to="/featuredItems">
                         <Button
                             color="primary"
                             autoFocus
                             variant="contained"
-                            onClick={handleClose}
-                        >
-                            Return home
+                            onClick={handleSuccessClose}
+                            >
+                            Exit
                         </Button>
-                    </Link>
                 </DialogActions>
-            </Dialog> */}
+            </Dialog>
         </Card>
     );
 };

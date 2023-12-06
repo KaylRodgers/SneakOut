@@ -45,8 +45,6 @@ const UpdateUser = (props) => {
         email: "",
         password: ""
     });
-    const [open, setOpen] = useState(false);
-    const [error, setError] = useState(false);
 
     const handleChange = username => event => {
         setValues({ ...values, [username]: event.target.value })
@@ -65,13 +63,21 @@ const UpdateUser = (props) => {
                 setValues({ ...values, error: '', redirectToReferrer: true });
                 setOpen(true);
             } else {
-                setOpen(false);
+                setError(true);
+                setErrorMessage(data.message);
             }
         })
     }
 
-    function handleClose() {
-        return <Redirect to="/"/>;
+    const [open, setOpen] = useState(false);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    function handleSuccessClose() {
+        setOpen(false);
+    }
+    function handleErrorClose() {
+        setError(false);
     }
 
     return (
@@ -102,26 +108,43 @@ const UpdateUser = (props) => {
             </CardActions>
 
 
-            {/* <Dialog open={open} onClose={handleClose} disableEscapeKeyDown>
-                <DialogTitle>Updated Sneaker</DialogTitle>
+            <Dialog open={error}>
+                <DialogTitle>Error!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        A sneaker successfully been updated.
+                        There has been an error: {errorMessage}.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Link to="/featuredItems">
                         <Button
                             color="primary"
                             autoFocus
                             variant="contained"
-                            onClick={handleClose}
-                        >
-                            Return home
+                            onClick={handleErrorClose}
+                            >
+                            Exit
                         </Button>
-                    </Link>
                 </DialogActions>
-            </Dialog> */}
+            </Dialog>
+
+            <Dialog open={open}>
+                <DialogTitle>Updated User</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        A user has been updated!
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                        <Button
+                            color="primary"
+                            autoFocus
+                            variant="contained"
+                            onClick={handleSuccessClose}
+                            >
+                            Exit
+                        </Button>
+                </DialogActions>
+            </Dialog>
         </Card>
     );
 };

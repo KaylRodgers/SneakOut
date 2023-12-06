@@ -44,8 +44,6 @@ const RemoveItems = () => {
         colourway: "",
         model: ""
     });
-    const [open, setOpen] = useState(false);
-    const [error, setError] = useState(false);
 
     const handleChange = username => event => {
         setValues({ ...values, [username]: event.target.value })
@@ -63,13 +61,21 @@ const RemoveItems = () => {
                 setValues({ ...values, error: '', redirectToReferrer: true });
                 setOpen(true);
             } else {
-                console.log(data.message);
+                setError(true);
+                setErrorMessage(data.message);
             }
         })
     }
 
-    function handleClose() {
-        return <Redirect to="/" />;
+    const [open, setOpen] = useState(false);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    function handleSuccessClose() {
+        setOpen(false);
+    }
+    function handleErrorClose() {
+        setError(false);
     }
 
     return (
@@ -96,26 +102,43 @@ const RemoveItems = () => {
             </CardActions>
 
 
-            {/* <Dialog open={open} onClose={handleClose} disableEscapeKeyDown>
-                <DialogTitle>Updated Sneaker</DialogTitle>
+            <Dialog open={error}>
+                <DialogTitle>Error!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        A sneaker successfully been updated.
+                        There has been an error: {errorMessage}.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Link to="/featuredItems">
                         <Button
                             color="primary"
                             autoFocus
                             variant="contained"
-                            onClick={handleClose}
-                        >
-                            Return home
+                            onClick={handleErrorClose}
+                            >
+                            Exit
                         </Button>
-                    </Link>
                 </DialogActions>
-            </Dialog> */}
+            </Dialog>
+
+            <Dialog open={open}>
+                <DialogTitle>Deleted Sneaker</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        A sneaker has been deleted!
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                        <Button
+                            color="primary"
+                            autoFocus
+                            variant="contained"
+                            onClick={handleSuccessClose}
+                            >
+                            Exit
+                        </Button>
+                </DialogActions>
+            </Dialog>
         </Card>
     );
 };
