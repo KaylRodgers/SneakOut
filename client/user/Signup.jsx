@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
-import { create } from "./api-user";
+import UserCtrl from "./api-user";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -68,7 +68,7 @@ export default function Signup() {
     console.log("user data submitted from the form");
 
     console.log(user);
-    create(user).then((data) => {
+    UserCtrl.create(user).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {

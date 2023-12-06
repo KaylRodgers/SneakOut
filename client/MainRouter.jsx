@@ -10,6 +10,7 @@ import FeaturedItems from "./products/FeaturedItems";
 import EditItems from "./products/EditItems";
 import CreateItems from "./products/CreateItems";
 import RemoveItems from "./products/RemoveItem";
+import UpdateUser from './user/UpdateUser.jsx';
 
 const MainRouter = () => {
   return (
@@ -17,7 +18,7 @@ const MainRouter = () => {
       <Menu />
       <Switch>
       <Route exact path="/" component={Home}/>
-        <Route path="/users" component={Users}/>
+        <Route path="/user" component={UpdateUser}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/signin" component={Signin}/>
         <Route path="/products" component={Products}/>

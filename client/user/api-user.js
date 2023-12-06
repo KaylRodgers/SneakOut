@@ -25,7 +25,7 @@ const create = async (user) => {
       let response = await fetch('http://localhost:3001/api/users/', {
         method: 'GET',
         signal: signal,
-        mode: "no-cors",
+        mode: "cors",
         credentials: "same-origin"
       })
       return await response.json()
@@ -34,54 +34,33 @@ const create = async (user) => {
     }
   }
   
-  const read = async (params, credentials, signal) => {
-    try {
-      let response = await fetch('http://localhost:3001/api/users/', {
-        method: 'GET',
-        signal: signal,
-        mode: "no-cors",
-        credentials: "same-origin",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
-        }
-      })
-      return await response.json()
-    } catch(err) {
-      console.log(err)
-    }
-  }
-  
-  const update = async (params, credentials, user) => {
+  const update = async (user) => {
     try {
       let response = await fetch('http://localhost:3001/api/users/', {
         method: 'PUT',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
         },
-        mode: "no-cors",
-        credentials: "same-origin",
+        mode: "cors",
         body: JSON.stringify(user)
       })
+      
       return await response.json()
     } catch(err) {
       console.log(err)
     }
   }
   
-  const remove = async (params, credentials) => {
+  const remove = async (user) => {
     try {
       let response = await fetch('http://localhost:3001/api/users/', {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
+          'Content-Type': 'application/json'
         },
-        mode: "no-cors",
+        mode: "cors",
         credentials: "same-origin"
       })
       return await response.json()
@@ -90,13 +69,9 @@ const create = async (user) => {
     }
   }
   
-  const stripeUpdate = 0;
-  
-  export {
+  export default {
     create,
     list,
-    read,
     update,
-    remove,
-    stripeUpdate
+    remove
   }     

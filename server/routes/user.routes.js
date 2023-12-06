@@ -7,8 +7,12 @@ const router = express.Router();
 router
   .route('/api/users')
   .post(userCtrl.create)
+  //Complete
   .get(authCtrl.hasAuthorization, userCtrl.list)
-  .put(authCtrl.hasAuthorization, userCtrl.update)
+  //Finished
+  .put(
+    // authCtrl.hasAuthorization,
+    userCtrl.update)
   .delete(authCtrl.hasAuthorization, userCtrl.remove);
 
 router
