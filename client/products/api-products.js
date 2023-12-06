@@ -31,17 +31,15 @@ const list = async (signal) => {
     }
 }
 
-const update = async (params, credentials, sneaker) => {
+const update = async (sneaker) => {
     try {
         let response = await fetch('http://localhost:3001/api/products/', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + credentials.t
+                'Content-Type': 'application/json'
             },
             mode: "cors",
-            credentials: "same-origin",
             body: JSON.stringify(sneaker)
         })
         return await response.json()

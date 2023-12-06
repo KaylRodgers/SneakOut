@@ -35,13 +35,12 @@ const EditItems = (props) => {
             price: values.price || undefined,
         }
 
-        products.update(sneaker).then((data) => {
-            if (data.message == "The sneaker cannot be created!") {
+        products.update(updatedSneaker).then((data) => {
+            if (data.message == "Your sneaker has been updated successful!") {
                 setValues({ ...values, error: '', redirectToReferrer: true });
                 setOpen(true);
             } else {
-                // useEffect (() => { setError(true) }, []);
-                console.log(error);
+                console.log(data.message);
             }
         })
     }

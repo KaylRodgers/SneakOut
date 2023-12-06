@@ -13,8 +13,8 @@ const list = async (req, res) => {
 
   const updatePrice = async (req, res) => {
     try {
-      await Sneaker.updateOne({ model: req.body.model, colourway: req.body.colourway }, req.body);
-      if (Sneaker.find(req.body)) {
+      let update = await Sneaker.updateOne({ model: req.body.model, colourway: req.body.colourway }, req.body);
+      if (update.modifiedCount > 0) {
         res.json({ message: "Your sneaker has been updated successful!" });
       } else {
         throw err;
