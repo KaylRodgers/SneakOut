@@ -63,7 +63,7 @@ const list = async (req, res) => {
       } else {
         return res.status(200).json({
             deletedSneaker,
-          message: "A user has been successfully deleted!",
+          message: "A sneaker has been successfully deleted!",
         });
       }
     } catch (err) {
