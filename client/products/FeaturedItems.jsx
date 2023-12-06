@@ -1,9 +1,35 @@
 import React from 'react';
 import { useState } from 'react';
 import products from './api-products.js'
+import { makeStyles } from '@material-ui/core';
 import './FeaturedItems.css'
 
+const useStyles = makeStyles((theme) => ({
+    card: {
+        maxWidth: 400,
+        margin: "0 auto",
+        marginTop: theme.spacing(3),
+        padding: theme.spacing(2),
+        textAlign: "center",
+    },
+    textField: {
+        width: "100%",
+        marginBottom: theme.spacing(2),
+    },
+    error: {
+        color: "red",
+    },
+    submit: {
+        margin: "0 auto",
+        marginBottom: theme.spacing(2),
+    },
+    title: {
+        fontSize: 18,
+    },
+}));
+
 const FeaturedItems = () => {
+    const classes = useStyles();
     const [sneakers, setSneakers] = useState([])
 
     const abortController = new AbortController()

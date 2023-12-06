@@ -8,11 +8,35 @@ import {
     CardActions,
     Icon,
     Button,
-    Dialog,DialogTitle,DialogContent,DialogContentText,DialogActions,Link
+    Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Link
 } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core';
 import products from './api-products.js';
 import { Redirect } from 'react-router-dom';
+
+const useStyles = makeStyles((theme) => ({
+    card: {
+        maxWidth: 400,
+        margin: "0 auto",
+        marginTop: theme.spacing(3),
+        padding: theme.spacing(2),
+        textAlign: "center",
+    },
+    textField: {
+        width: "100%",
+        marginBottom: theme.spacing(2),
+    },
+    error: {
+        color: "red",
+    },
+    submit: {
+        margin: "0 auto",
+        marginBottom: theme.spacing(2),
+    },
+    title: {
+        fontSize: 18,
+    },
+}));
 
 const RemoveItems = () => {
     const [values, setValues] = useState({
@@ -44,7 +68,7 @@ const RemoveItems = () => {
     }
 
     function handleClose() {
-        return <Redirect to="/"/>;
+        return <Redirect to="/" />;
     }
 
     return (
