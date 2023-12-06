@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EditItems = (props) => {
+    const classes = useStyles();
     const [values, setValues] = useState({
         colourway: "",
         model: "",
@@ -74,14 +75,14 @@ const EditItems = (props) => {
     }
 
     return (
-        <Card >
+        <Card className={classes.card}>
             <CardContent>
-                <Typography variant="h5">
+                <Typography variant="h5" className={classes.title}>
                     Edit Sneaker
                 </Typography>
-                <TextField id="colourway" label="Colourway" value={values.colourway} onChange={handleChange('colourway')} margin="normal" /><br />
-                <TextField id="model" label="Model" value={values.model} onChange={handleChange('model')} margin="normal" /><br />
-                <TextField id="price" label="Price" value={values.price} onChange={handleChange('price')} margin="normal" /><br />
+                <TextField id="colourway" label="Colourway" value={values.colourway} onChange={handleChange('colourway')} margin="normal" className={classes.textField} /><br />
+                <TextField id="model" label="Model" value={values.model} onChange={handleChange('model')} margin="normal" className={classes.textField} /><br />
+                <TextField id="price" label="Price" value={values.price} onChange={handleChange('price')} margin="normal" className={classes.textField} /><br />
                 <br />
                 {
                     values.error &&
@@ -94,7 +95,7 @@ const EditItems = (props) => {
                 }
             </CardContent>
             <CardActions>
-                <Button color="primary" variant="contained" onClick={clickSubmit}>Update Sneaker</Button>
+                <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit} >Update Sneaker</Button>
             </CardActions>
 
 

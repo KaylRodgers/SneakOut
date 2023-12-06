@@ -80,14 +80,14 @@ const CreateItems = (props) => {
     return (
         <Card className={classes.card}>
             <CardContent>
-                <Typography variant="h5">
+                <Typography variant="h5" className={classes.title}>
                     Create Sneaker
                 </Typography>
 
-                <TextField id="link" label="Image Link" value={values.link} onChange={handleChange('link')} margin="normal" /><br />
-                <TextField id="colourway" label="Colourway" value={values.colourway} onChange={handleChange('colourway')} margin="normal" /><br />
-                <TextField id="model" label="Model" value={values.model} onChange={handleChange('model')} margin="normal" /><br />
-                <TextField id="price" label="Price" value={values.price} onChange={handleChange('price')} margin="normal" /><br />
+                <TextField id="link" label="Image Link" value={values.link} onChange={handleChange('link')} margin="normal" className={classes.textField} /><br />
+                <TextField id="colourway" label="Colourway" value={values.colourway} onChange={handleChange('colourway')} margin="normal" className={classes.textField} /><br />
+                <TextField id="model" label="Model" value={values.model} onChange={handleChange('model')} margin="normal" className={classes.textField} /><br />
+                <TextField id="price" label="Price" value={values.price} onChange={handleChange('price')} margin="normal" className={classes.textField} /><br />
                 <br />
                 {
                     values.error &&
@@ -100,7 +100,7 @@ const CreateItems = (props) => {
                 }
             </CardContent>
             <CardActions>
-                <Button color="primary" variant="contained" onClick={clickSubmit}>Create Sneaker</Button>
+                <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit} >Create Sneaker</Button>
             </CardActions>
 
 

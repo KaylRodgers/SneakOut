@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RemoveItems = () => {
+    const classes = useStyles();
     const [values, setValues] = useState({
         colourway: "",
         model: ""
@@ -72,13 +73,13 @@ const RemoveItems = () => {
     }
 
     return (
-        <Card >
+        <Card className={classes.card} >
             <CardContent>
-                <Typography variant="h5">
+                <Typography variant="h5" className={classes.title} >
                     Remove Sneaker
                 </Typography>
-                <TextField id="colourway" label="Colourway" value={values.colourway} onChange={handleChange('colourway')} margin="normal" /><br />
-                <TextField id="model" label="Model" value={values.model} onChange={handleChange('model')} margin="normal" /><br />
+                <TextField id="colourway" label="Colourway" value={values.colourway} onChange={handleChange('colourway')} margin="normal" className={classes.textField} /><br />
+                <TextField id="model" label="Model" value={values.model} onChange={handleChange('model')} margin="normal" className={classes.textField} /><br />
                 <br />
                 {
                     values.error &&
@@ -91,7 +92,7 @@ const RemoveItems = () => {
                 }
             </CardContent>
             <CardActions>
-                <Button color="primary" variant="contained" onClick={clickSubmit}>Remove Sneaker</Button>
+                <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit} >Remove Sneaker</Button>
             </CardActions>
 
 

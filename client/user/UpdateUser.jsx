@@ -37,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 18,
     },
   }));
-  
+
 const UpdateUser = (props) => {
+    const classes = useStyles();
     const [values, setValues] = useState({
         username: "",
         email: "",
@@ -74,16 +75,16 @@ const UpdateUser = (props) => {
     }
 
     return (
-        <Card >
+        <Card className={classes.card} >
             <CardContent>
-                <Typography variant="h5">
+                <Typography variant="h5" className={classes.title} >
                     Edit User
                 </Typography>
-                <TextField id="username" label="Username" value={values.username} onChange={handleChange('username')} margin="normal" /><br />
+                <TextField id="username" label="Username" value={values.username} onChange={handleChange('username')} margin="normal" className={classes.textField} /><br />
 
-                <TextField id="email" label="Email" value={values.email} onChange={handleChange('email')} margin="normal" /><br />
+                <TextField id="email" label="Email" value={values.email} onChange={handleChange('email')} margin="normal" className={classes.textField} /><br />
                 
-                <TextField id="password" label="Password" value={values.password} onChange={handleChange('password')} margin="normal" /><br />
+                <TextField id="password" label="Password" value={values.password} onChange={handleChange('password')} margin="normal" className={classes.textField} /><br />
                 <br />
                 
                 {
@@ -97,7 +98,7 @@ const UpdateUser = (props) => {
                 }
             </CardContent>
             <CardActions>
-                <Button color="primary" variant="contained" onClick={clickSubmit}>Update Sneaker</Button>
+                <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit} >Update User</Button>
             </CardActions>
 
 
