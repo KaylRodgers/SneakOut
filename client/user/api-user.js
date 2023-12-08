@@ -1,15 +1,20 @@
 
 const create = async (user) => {
     try {
-        let response = await fetch('/api/users/', {
+        let response = await fetch('http://localhost:3001/api/users/', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
+          mode: "cors",
+          // credentials: "same-origin",
           body: JSON.stringify(user)
-        })
-      return await response.json()
+        });
+        if (response) {
+          return await response.json();
+        }
+        return "Error: No response"
     } catch(err) {
       console.log(err)
     }
@@ -17,9 +22,11 @@ const create = async (user) => {
   
   const list = async (signal) => {
     try {
-      let response = await fetch('/api/users/', {
+      let response = await fetch('http://localhost:3001/api/users/', {
         method: 'GET',
         signal: signal,
+        mode: "cors",
+        credentials: "same-origin"
       })
       return await response.json()
     } catch(err) {
@@ -27,67 +34,34 @@ const create = async (user) => {
     }
   }
   
-  const read = async (params, credentials, signal) => {
+  const update = async (user) => {
     try {
-      let response = await fetch('/api/users/' + params.userId, {
-        method: 'GET',
-        signal: signal,
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
-        }
-      })
-      return await response.json()
-    } catch(err) {
-      console.log(err)
-    }
-  }
-  
-  const update = async (params, credentials, user) => {
-    try {
-      let response = await fetch('/api/users/' + params.userId, {
+      let response = await fetch('http://localhost:3001/api/users/', {
         method: 'PUT',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
         },
+        mode: "cors",
         body: JSON.stringify(user)
       })
+      
       return await response.json()
     } catch(err) {
       console.log(err)
     }
   }
   
-  const remove = async (params, credentials) => {
+  const remove = async (user) => {
     try {
-      let response = await fetch('/api/users/' + params.userId, {
+      let response = await fetch('http://localhost:3001/api/users/', {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
-        }
-      })
-      return await response.json()
-    } catch(err) {
-      console.log(err)
-    }
-  }
-  
-  const stripeUpdate = async (params, credentials, auth_code, signal) => {
-    try {
-      let response = await fetch ('/api/stripe_auth/'+params.userId, {
-        method: 'PUT',
-        signal: signal,
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({stripe: auth_code})
+        mode: "cors",
+        credentials: "same-origin"
       })
       return await response.json()
     } catch(err) {
@@ -95,11 +69,9 @@ const create = async (user) => {
     }
   }
   
-  export {
+  export default {
     create,
     list,
-    read,
     update,
-    remove,
-    stripeUpdate
+    remove
   }     

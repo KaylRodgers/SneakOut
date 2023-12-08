@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
-import { create } from "./api-user";
+import UserCtrl from "./api-user";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup() {
   const classes = useStyles();
 
-  const [open, setOpen] = useState(false);
   const [values, setValues] = useState({
     username: "",
     password: "",
@@ -68,14 +67,27 @@ export default function Signup() {
     console.log("user data submitted from the form");
 
     console.log(user);
-    create(user).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
+    UserCtrl.create(user).then((data) => {
+      console.log(data.message);
+      if (data.message == "Successfully created!") {
         setOpen(true);
+      } else {
+        setError(true);
+        setErrorMessage(data.message);
       }
     });
   };
+
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  function handleSuccessClose() {
+    setOpen(false);
+  }
+  function handleErrorClose() {
+    setError(false);
+  }
 
   return (
     <>
@@ -123,24 +135,40 @@ export default function Signup() {
         </CardActions>
       </Card>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>New Account</DialogTitle>
+      <Dialog open={error}>
+        <DialogTitle>Error!</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            New account successfully created.
+            There has been an error: {errorMessage}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          <Button
+            color="primary"
+            autoFocus
+            variant="contained"
+            onClick={handleErrorClose}
+          >
+            Exit
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog open={open}>
+        <DialogTitle>Signed-up!</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            You are signed up!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+        <DialogActions>
           <Link to="/signin">
-            <Button
-              color="primary"
-              autoFocus
-              variant="contained"
-              onClick={handleClose}
-            >
+            <Button color="primary" autoFocus="autoFocus" variant="contained">
               Sign In
             </Button>
           </Link>
+        </DialogActions>
         </DialogActions>
       </Dialog>
     </>

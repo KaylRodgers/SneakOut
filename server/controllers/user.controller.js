@@ -16,8 +16,8 @@ const list = async (req, res) => {
 //Users can update their emails using their usernames.
 const update = async (req, res) => {
   try {
-    await User.updateOne({ username: req.body.username }, req.body);
-    if (User.find(req.body)) {
+    let update = await User.updateOne({ username: req.body.username }, req.body);
+    if (update.modifiedCount > 0) {
       res.json({ message: "Update successful!" });
     } else {
       throw err;

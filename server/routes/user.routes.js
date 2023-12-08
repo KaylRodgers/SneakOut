@@ -10,7 +10,9 @@ router
   //Complete
   .get(authCtrl.hasAuthorization, userCtrl.list)
   //Finished
-  .put(authCtrl.hasAuthorization, userCtrl.update)
+  .put(
+    // authCtrl.hasAuthorization,
+    userCtrl.update)
   .delete(authCtrl.hasAuthorization, userCtrl.remove);
 
 router

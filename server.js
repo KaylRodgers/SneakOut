@@ -1,7 +1,8 @@
 const config = require("./config/config.js");
 const app = require("./server/express.js");
 const mongoose = require("mongoose");
-const userSchema = require("./server/models/user.model.js");
+const User = require("./server/models/user.model.js");
+const Sneaker = require("./server/models/shoe.model.js")
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoUri, {} )
@@ -17,14 +18,17 @@ database.on(
     }
 );
 
-const user = userSchema;
 
-user.createCollection().then((collection) => {
-    console.log("User collection is created.");
+User.createCollection().then((collection) => {
+    console.log("User collection is connected.");
+});
+
+Sneaker.createCollection().then((collection) => {
+  console.log("Sneaker collection is connected.");
 });
 
 app.get('/', (req, res) => {
-  res.json({message: "Welcome to User application!"});
+  res.json({message: "Welcome to SneakOut!"});
 });
 
 app.listen(config.port, (err) => {
