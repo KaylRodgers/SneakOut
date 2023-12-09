@@ -3,11 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-<<<<<<< HEAD
 import FeaturedItems from "../products/FeaturedItems";
-=======
-import { Link } from "react-router-dom";
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -33,13 +29,7 @@ export default function Home() {
       <Link to="/">Sign Out</Link> */}
       <Card className={classes.card}>
         <CardContent>
-<<<<<<< HEAD
           <FeaturedItems/>
-=======
-          <Typography variant="body2" component="p">
-            Welcome to the Sneakout home page.
-          </Typography>
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
         </CardContent>
       </Card>
     </>
