@@ -4,7 +4,11 @@ const config = {
   jwtSecret: process.env.JWT_SECRET || "cOMp_229",
   mongoUri:
     process.env.MONGODB_URI ||
+<<<<<<< HEAD
     "mongodb+srv://admin:C0dF0BZRRYcf9jPS@sneakout.4hzzcfi.mongodb.net/?retryWrites=true&w=majority",
+=======
+    "mongodb+srv://SneakOut_Admin:83fGvqfDZytC3Gb@cluster0.qvpmnce.mongodb.net/?retryWrites=true&w=majority",
+>>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
   userToken:
     process.env.USER_TOKEN || ["secretAdminCode_TkTWh"] ||
     process.env.MONGO_HOST ||
