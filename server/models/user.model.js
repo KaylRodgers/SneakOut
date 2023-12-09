@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import mongoose from "mongoose";
-import crypto from "crypto";
-=======
 const mongoose = require("mongoose");
 const crypto = require("crypto");
->>>>>>> tristanMbugua
 
 const UserSchema = new mongoose.Schema(
     {
@@ -105,14 +100,5 @@ UserSchema.methods =
     }
 };
 
-<<<<<<< HEAD
 
 module.exports = userModel = mongoose.model("User", UserSchema);
-=======
-<<<<<<< HEAD
-export default mongoose.model("User", UserSchema);
-=======
-
-module.exports = userModel = mongoose.model("User", UserSchema);
->>>>>>> tristanMbugua
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22

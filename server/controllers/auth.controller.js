@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-import User from '../models/user.model.js';
-import jwt from 'jsonwebtoken';
-import config from './../../config/config.js';
-=======
 const User = require('../models/user.model.js');
 const jwt = require('jsonwebtoken');
 const {expressjwt} = require('express-jwt');
 const config = require('./../../config/config.js');
->>>>>>> tristanMbugua
 
 
 const signin = async (req, res) => {
@@ -25,15 +19,7 @@ const signin = async (req, res) => {
             token,
             user: {
                 _id: user._id,
-<<<<<<< HEAD
                 username: user.username,
-=======
-<<<<<<< HEAD
-                name: user.name,
-=======
-                username: user.username,
->>>>>>> tristanMbugua
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
                 email: user.email
             }
         });
@@ -53,20 +39,11 @@ const signout = (req, res) => {
         message: "signed out"
     })
 };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
 const requireSignin = expressjwt({ 
     secret: config.jwtSecret, 
     algorithms: ["HS256"],
 userProperty: 'auth'
 })
-<<<<<<< HEAD
-=======
->>>>>>> tristanMbugua
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
 
 const hasAuthorization = 
     (req, res, next) => {
@@ -85,12 +62,4 @@ const hasAuthorization =
 }
 ;
 
-<<<<<<< HEAD
 module.exports = { signin, signout, requireSignin, hasAuthorization };
-=======
-<<<<<<< HEAD
-export default { signin, signout, hasAuthorization };
-=======
-module.exports = { signin, signout, requireSignin, hasAuthorization };
->>>>>>> tristanMbugua
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
