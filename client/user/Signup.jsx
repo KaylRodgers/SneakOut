@@ -162,7 +162,6 @@ export default function Signup() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-<<<<<<< HEAD
         <DialogActions>
           <Link to="/signin">
             <Button color="primary" autoFocus="autoFocus" variant="contained">
@@ -170,16 +169,6 @@ export default function Signup() {
             </Button>
           </Link>
         </DialogActions>
-=======
-          <Button
-            color="primary"
-            autoFocus
-            variant="contained"
-            onClick={handleSuccessClose}
-          >
-            Exit
-          </Button>
->>>>>>> bdfa40613b0dd3014693d057973f2a3df751cb22
         </DialogActions>
       </Dialog>
     </>
